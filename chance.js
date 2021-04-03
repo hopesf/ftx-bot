@@ -81,12 +81,16 @@ setInterval(function () {
 
                 let yuzde = (100-da[k].lowPrice*100/da[k].lastPrice).toFixed(3);
                 let yuzde2 = (da[k].highPrice*100/da[k].lastPrice-100).toFixed(3);
+                if(2>da[k].lastPrice){
+                    dibFiyatUstu = (da[k].lowPrice/1000)*1001;
+                }else {
+                    dibFiyatUstu = (da[k].lowPrice/1000)*1005;
+                }
 
 
-                if(1>yuzde){
+                if(da[k].lastPrice<dibFiyatUstu){
                     console.log('\n',cname,yuzde,lowCount,highCount,btc,yuzde2)
                     oyna(cname,yuzde,lowCount,highCount,btc,yuzde2);
-
                 }
 
 
@@ -105,8 +109,8 @@ oyna = async (cname,yuzde,lowCount,highCount,btc,yuzde2) =>{
     let arr = [];
     let i = await ftx_rest.any_proces_control_status(cname+'-PERP');
     console.log(lowCount,yuzde,btc,i,yuzde2,cname)
-    if(i<0.1){
-        if(lowCount>15 && highCount>15 ){
+    if(i<1){
+        if(lowCount>20 && highCount>20 ){
             if(btc){
                 if(yuzde2>3){
                     if(!oynanan.includes(cname)){
