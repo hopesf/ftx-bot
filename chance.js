@@ -52,7 +52,7 @@ setInterval(function () {
                 if(yuzde2>yuzde){highCount++}else{lowCount++}
 
                 if(da[k].symbol == 'BTCUSDT'){
-                    if(yuzde<1){
+                    if(yuzde<1 && yuzde2<1){
                         btc=0;
                     }else{
                         btc = 1;
