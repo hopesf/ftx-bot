@@ -105,10 +105,10 @@ oyna = async (cname,yuzde,lowCount,highCount,btc,yuzde2) =>{
     let arr = [];
     let i = await ftx_rest.any_proces_control_status(cname+'-PERP');
     console.log(lowCount,yuzde,btc,i,yuzde2,cname)
-    if(i<1){
-        if(lowCount>20 && highCount>20 ){
+    if(i<0.1){
+        if(lowCount>15 && highCount>15 ){
             if(btc){
-                if(yuzde2>5){
+                if(yuzde2>3){
                     if(!oynanan.includes(cname)){
                         while_process_false(10,1,2,'LONG',cname+'-PERP');
                         arr.push([yuzde,cname,'l']);
