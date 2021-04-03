@@ -89,6 +89,17 @@ setInterval(function () {
 
 
                 if(da[k].lastPrice<dibFiyatUstu){
+
+                    ftx_rest.gecmis_getir( {
+                        market_name:cname,
+                        resolution: 86400,
+                        limit:35,
+                        ne_zamandan_itibaren: (60 * 60 * 24* 1), // 24 saat
+                        aralik:"gunluk"
+                    } ).then(r=>{
+                        console.log( {r} );
+                    });
+
                     console.log('\n',cname,yuzde,lowCount,highCount,btc,yuzde2)
                     oyna(cname,yuzde,lowCount,highCount,btc,yuzde2);
                 }
