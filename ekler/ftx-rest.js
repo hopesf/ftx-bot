@@ -156,6 +156,48 @@ const output = {
         });
         return pr;
     },
+    emirleri_iptal_et: function( market_name ){
+        let pr = new Promise((resolve, reject) => {
+            (async() => {
+                ftx.request({
+                    method: 'DELETE',
+                    path: '/orders',
+                    data: {
+                        "market": market_name
+                    }
+                }).then(r=>{
+                    resolve(r);
+                });
+            })()
+        });
+        return pr;
+    },
+    gecmis_getir:function( data ){
+        let pr = new Promise((resolve, reject) => {
+            (async() => {
+                let suan = parseInt(new Date().getTime() / 1000 );
+                params = {
+                    method: 'GET',
+                    path: '/indexes/'+data["market_name"]+'/candles?resolution='+data["resolution"]+'&limit='+data["limit"]+'&start_time='+ ( suan - (data["ne_zamandan_itibaren"]) ) +'&end_time='+suan,
+                };
+                console.log( {params} );
+                ftx.request(params).then(r=>{
+                    let price = { aralik:data.aralik, market_name:data["market_name"], top:0, low:99999999999999999999999999 }
+                    r.result.forEach((v, k) => {
+                        if ( v.high > price.top ){
+                            price.top = v.high;
+                        }
+                        if ( v.low < price.low ){
+                            price.low = v.low;
+                        }
+
+                    });
+                    resolve( price, r.result );
+                });
+            })()
+        });
+        return pr;
+    },
     get_price: async function(){
         let pr = new Promise((resolve, reject) => {
                 ftx.request({
