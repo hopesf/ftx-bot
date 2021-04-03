@@ -9,7 +9,7 @@ const binance = new Binance().options({
 });
 var beep = require('beepbeep')
 
-
+let oynanan = [];
 
 var coins = [
     'ADA','1INCH','AAVE','ALGO','ALPHA','ALT','AMPL','AR','ATOM','AVAX','BADGER','BAND','BAO','BAT','BCH','BNB',
@@ -37,6 +37,7 @@ setInterval(function () {
         let minCount = 0;
         let yuzdeArr = [];
         let info = [];
+
 
         for(k in da){
             let cname = (da[k].symbol).replace("USDT", "");
@@ -85,6 +86,7 @@ setInterval(function () {
                 if(1>yuzde){
                     console.log('\n',cname,yuzde,lowCount,highCount,btc,yuzde2)
                     oyna(cname,yuzde,lowCount,highCount,btc,yuzde2);
+
                 }
 
 
@@ -104,12 +106,16 @@ oyna = async (cname,yuzde,lowCount,highCount,btc,yuzde2) =>{
     let i = await ftx_rest.any_proces_control_status(cname+'-PERP');
     console.log(lowCount,yuzde,btc,i,yuzde2,cname)
     if(i<1){
-        if(lowCount>23 && highCount>23 ){
+        if(lowCount>20 && highCount>20 ){
             if(btc){
                 if(yuzde2>5){
-                  while_process_false(200,1,2,'LONG',cname+'-PERP');
-                    arr.push([yuzde,cname,'l']);
-                    beep();
+                    if(!oynanan.includes(cname)){
+                        while_process_false(10,1,2,'LONG',cname+'-PERP');
+                        arr.push([yuzde,cname,'l']);
+                        oynanan.push(cname)
+                        beep();
+                    }
+
                 }
             }
         }
