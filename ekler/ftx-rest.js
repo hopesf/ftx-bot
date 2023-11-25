@@ -1,8 +1,8 @@
 const FTXRest = require('./');
 
 const ftx = new FTXRest({
-  key: 'VFuBTDN98zz_g1eNiN_k0gUiCy9YcmkEgbFBcvl-',
-  secret: '57LfpU5KI2T6qUhXYRfXy0JaAX6Hj9Lhc34xWxcs',
+  key: '************',
+  secret: '************',
   subaccount:"lena"
 });
 __dirname
