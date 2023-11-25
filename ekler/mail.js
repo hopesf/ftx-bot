@@ -8,8 +8,8 @@ config_mail =  {
         rejectUnauthorized:false
     },
     auth: {
-        user:"teknik.destek@missha.com.tr",
-        pass:"tkd12355321"
+        user:"*********",
+        pass:"*********"
     },
 }
 
