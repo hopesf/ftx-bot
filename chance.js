@@ -4,8 +4,8 @@ const mail = require("./ekler/mail");
 
 const Binance = require('node-binance-api');
 const binance = new Binance().options({
-    APIKEY: 'L0vSbia0FinQCHzqCEwjtdvpUoGm4ELkmJnhJa6yNrdiENvecvsb8k4V6EZugQ40',
-    APISECRET: 'zVsB8DtrCMsAdJQuWoy8u5bnSo0XQPF7rElgJe1FVQ0r5fDo1vP2GlgE8az4HETH'
+    APIKEY: '********************',
+    APISECRET: '****************'
 });
 var beep = require('beepbeep')
 
