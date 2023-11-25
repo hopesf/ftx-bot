@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 
 config_mail =  {
-    host: "mail.missha.com.tr",
+    host: "**********",
     port:587,
     secure:false,
     tls: {
@@ -19,7 +19,7 @@ module.exports = {
     gonder: function( bakiye ){
         mail_bilgisi = {
             from: config_mail.auth.user,
-            to: "mehmet.tkmk.0352@gmail.com",
+            to: "***********",
             subject:"İşlem bekliyor",
             text: "İşlem bitti bakiye: "+bakiye
         }
